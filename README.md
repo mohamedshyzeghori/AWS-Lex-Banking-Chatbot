@@ -11,7 +11,7 @@
  * `FallbackIntent`: Handles unexpected user inputs. 
  * `CheckBalance`: Retrieves the balance of a specified account. 
  * `TransferFunds`: Initiates a transfer of funds between accounts. 
- * Custom Slots: Uses custom slots (`accountType`, `dateOfBirth`) to capture specific information. 
+ *  Custom Slots: Uses custom slots (`accountType`, `dateOfBirth`) to capture specific information. 
  * Lambda Integration: Integrates with AWS Lambda functions to provide dynamic responses. 
  * Context Management: Implements context carryover to maintain information across conversational turns. 
  * Confirmation Prompts: Uses confirmation prompts to verify fund transfer requests.
@@ -42,74 +42,6 @@
              * Create the Lambda functions 
              * Configure the Lex intents to use the corresponding Lambda functions.
              * Set up IAM permissions for Lex to invoke the Lambda functions.
-
- ###  Example Conversation Flow
-
- Okay, that's great! Including the Lambda function code, CloudFormation YAML, and the PDF report will make your GitHub repository very comprehensive. Here's how we can refine the README.md to account for those additions and some important considerations:
-
-Markdown
-
- #   AWS-Lex-Banking-Chatbot  (*Or choose one of the other repo names we discussed*)
-
- ##  Description
-
- This project implements a conversational banking chatbot using Amazon Lex. The chatbot is designed to handle common banking customer inquiries, including checking account balances and transferring funds between accounts. It leverages AWS Lambda for dynamic responses and AWS CloudFormation for automated deployment.  This repository contains the source code for the Lambda functions, the CloudFormation template for infrastructure provisioning, and a project report PDF.
-
- ##  Key Features
-
- * `WelcomeIntent`: Greets the user. [cite: 14]
- * `FallbackIntent`: Handles unexpected user inputs. [cite: 6, 22]
- * `CheckBalance`: Retrieves the balance of a specified account. [cite: 47]
- * `TransferFunds`: Initiates a transfer of funds between accounts. [cite: 96]
- * Custom Slots: Uses custom slots (`accountType`, `dateOfBirth`) to capture specific information. [cite: 32]
- * Lambda Integration: Integrates with AWS Lambda functions to provide dynamic responses. [cite: 54, 55]
- * Context Management: Implements context carryover to maintain information across conversational turns. [cite: 75, 76]
- * Confirmation Prompts: Uses confirmation prompts to verify fund transfer requests. [cite: 99, 100]
- * CloudFormation Deployment: Automates the deployment of the chatbot and associated AWS resources. [cite: 91, 103]
-
- ##  Tech Stack
-
- * [Amazon Lex](https://aws.amazon.com/lex/): For building the conversational interface. [cite: 4, 5]
- * [AWS Lambda](https://aws.amazon.com/lambda/): For serverless compute to handle business logic. [cite: 58, 59]
- * [AWS IAM](https://aws.amazon.com/iam/): For managing permissions and access control.
- * [AWS CloudFormation](https://aws.amazon.com/cloudformation/): For Infrastructure as Code. [cite: 103]
-
- ##  Repository Contents
-
- * `README.md`: This file, providing an overview of the project.
- * `code/`
-     * `lambda_functions/`:  Contains the source code for the AWS Lambda functions used by the chatbot. (e.g., `check_balance.py`, `transfer_funds.py`).
-     * `lex_config/`
-         * `cloudformation.yaml`:  The AWS CloudFormation template used to deploy the chatbot and its infrastructure.
- * `docs/`
-     * `project_report.pdf`: The original project report document.
- * `examples/`
-     * *(You might add example conversation logs here if you have them)*
-
- ##  Setup Instructions
-
- 1.  **Prerequisites:**
-     * AWS Account
-     * AWS CLI installed and configured
-
- 2.  **Deployment:**
-     * **CloudFormation (Recommended):**
-         * Use the provided `code/lex_config/cloudformation.yaml` file to create a CloudFormation stack.
-         * This will automatically provision the necessary AWS resources, including the Lex bot and Lambda functions.
-         * Command:  `aws cloudformation create-stack --stack-name <YourStackName> --template-body file://code/lex_config/cloudformation.yaml --capabilities CAPABILITY_IAM`
-     * **Manual Lex Setup (Alternative - Not Recommended for Full Deployment):**
-         * This project is designed for CloudFormation. Manual setup is complex.
-         * To set up manually, you would need to:
-             * Create a Lex bot and define intents (as described in the PDF report).
-             * Create the Lambda functions in the `code/lambda_functions/` directory.
-             * Configure the Lex intents to use the corresponding Lambda functions.
-             * Set up IAM permissions for Lex to invoke the Lambda functions.
-
- 3.  **Environment Variables:**
-     * *(If your Lambda functions use environment variables, document them here.  **Crucially, emphasize NOT committing credentials!** )*
-         * **Important:** Do **NOT** store any AWS credentials directly in the code or CloudFormation template. Use environment variables or IAM roles.
-
- ##  Usage
 
  ###  Example Conversation Flow
 
@@ -151,8 +83,7 @@ Bot:    Transfer complete.
 * `FallbackIntent` Importance: Initially, I underestimated the importance of the `FallbackIntent`.
     I learned that it's crucial for providing a graceful user experience when the chatbot doesn't understand an input.
     Properly configuring it improved the bot's robustness.
-* Lambda Permissions: I encountered an "Access Denied" error after deploying my bot due to denied access to the Lambda function.
-    I fixed this by creating a new Lambda function and creating a new Resource-based policy statement to give access.
+* Lambda Permissions: I encountered an "Access Denied" error after deploying my bot due to denied access to the Lambda function.I fixed this by creating a new Lambda function and creating a new Resource-based policy statement to give access.
 * CloudFormation Benefits: Using CloudFormation streamlined the deployment process and demonstrated the power of Infrastructure as Code for managing AWS resources.
 * Slot Clarity: Using clear slot names is important to identify their differences.
 * Context Carryover: Implementing context carryover improved the user experience.
